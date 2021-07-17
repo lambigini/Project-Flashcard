@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouteMatch, Link, useParams } from "react-router-dom";
 import { createCard, readDeck } from "../utils/api";
 import Breadcrumb from "./Breadcrumb";
+import CardForm from "./CardForm";
 
 function AddCard() {
   const { deckId } = useParams();
@@ -46,8 +47,6 @@ function AddCard() {
 
     const newcard = createCard(deckId, addCard, abortController.signal);
 
-    console.log("newcard,", newcard);
-
     setAddCard((current) => ({
       ...current,
       ["front"]: " ",
@@ -61,47 +60,13 @@ function AddCard() {
       <Breadcrumb url={url} object={currentDeck} text={"Add Card"} />
 
       <h1>{currentDeck.name} Add Card</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="front">
-          Front:
-          <br></br>
-          <textarea
-            id="front"
-            type="text"
-            name="front"
-            required
-            placeholder="Front side of the card"
-            autoFocus="on"
-            rows="10"
-            cols="60"
-            onChange={handleChange}
-            value={addCard.front}
-          ></textarea>
-        </label>
-        <br></br>
-        <label htmlFor="back">Back: </label>
-        <br></br>
-        <textarea
-          id="back"
-          type="text"
-          name="back"
-          required
-          placeholder="Back of the card"
-          autoFocus="on"
-          rows="10"
-          cols="60"
-          onChange={handleChange}
-          value={addCard.back}
-        ></textarea>
 
-        <br></br>
-        <Link to={`/decks/${deckId}`} className="btn btn-secondary">
-          Done
-        </Link>
-        <button type="submit" className="btn btn-primary">
-          Save
-        </button>
-      </form>
+      <CardForm
+        card={addCard}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        deckId={deckId}
+      />
     </div>
   );
 }

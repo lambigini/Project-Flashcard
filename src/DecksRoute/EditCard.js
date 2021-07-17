@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useRouteMatch, Link, useHistory } from "react-router-dom";
+import { useParams, useRouteMatch, useHistory } from "react-router-dom";
 import { readCard, readDeck, updateCard } from "../utils/api";
 import Breadcrumb from "./Breadcrumb";
+import CardForm from "./CardForm";
 
 function EditCard() {
   const { deckId, cardId } = useParams();
@@ -32,7 +33,7 @@ function EditCard() {
       setUpdateCurrentCard((current) => ({ ...current, ...loadCard }));
     }
     getCurrentDeck();
-  }, [deckId]);
+  }, [deckId, cardId]);
 
   const handleChange = ({ target }) => {
     setUpdateCurrentCard(
@@ -67,7 +68,7 @@ function EditCard() {
       <Breadcrumb url={url} object={currentDeck} text={`Edit Card ${cardId}`} />
 
       <h1> Edit Card</h1>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <label htmlFor="front">
           Front:
           <br></br>
@@ -107,7 +108,14 @@ function EditCard() {
         <button type="submit" className="btn btn-primary">
           Save
         </button>
-      </form>
+      </form> */}
+
+      <CardForm
+        card={updateCurrentCard}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        deckId={deckId}
+      />
     </div>
   );
 }

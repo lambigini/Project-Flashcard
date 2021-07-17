@@ -17,7 +17,7 @@ function Layout() {
     }
 
     getListOfDesk();
-  }, [listDecks]);
+  }, []);
 
   const handleDeleteButton = (indexToDeleted) => {
     const message = "Do you really want to Delete this Deck?";

@@ -73,6 +73,24 @@
       "back": "asq1",
       "deckId": 8,
       "id": 7
+    },
+    {
+      "front": " 1",
+      "back": " 2",
+      "deckId": 1,
+      "id": 9
+    },
+    {
+      "front": "11aa",
+      "back": "22bb",
+      "deckId": 1,
+      "id": 10
+    },
+    {
+      "front": "harrison",
+      "back": "software engineer",
+      "deckId": 1,
+      "id": 11
     }
   ]
 }

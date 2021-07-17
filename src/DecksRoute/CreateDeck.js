@@ -4,8 +4,6 @@ import { createDeck } from "../utils/api";
 import Breadcrumb from "./Breadcrumb";
 
 function CreateDeck() {
-  const [newId, setNewId] = useState(1);
-
   const history = useHistory();
 
   const initialFormState = {
@@ -49,7 +47,7 @@ function CreateDeck() {
             required
             placeholder="Deck Name"
             onChange={handleChange}
-            value={formData.name}
+            // value={formData.name}
           />
         </label>
         <br></br>
@@ -63,9 +61,9 @@ function CreateDeck() {
           placeholder="Brief description of the deck"
           autoFocus="on"
           rows="10"
-          cols="20"
+          cols="40"
           onChange={handleChange}
-          value={formData.description}
+          // value={formData.description}
         ></textarea>
 
         <br></br>
